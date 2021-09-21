@@ -8,7 +8,8 @@ module.exports = {
     filename: "bundle.[hash].js",
     path: path.resolve(__dirname, "dist"),
   },
-  mode: "production",
+  mode: process.env.NODE_ENV === "production" ? "production" : "development",
+  devtool: process.env.NODE_ENV === "development" ? "" : "source-map",
   module: {
     rules: [
       {
@@ -20,8 +21,8 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },
@@ -31,4 +32,7 @@ module.exports = {
       template: "./public/index.html",
     }),
   ],
+  devServer: {
+    port: 9000,
+  },
 };
