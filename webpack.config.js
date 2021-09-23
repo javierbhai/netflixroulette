@@ -3,7 +3,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./src/index.tsx",
   output: {
     filename: "bundle.[hash].js",
     path: path.resolve(__dirname, "dist"),
@@ -13,11 +13,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.tsx?$/,
         use: "babel-loader",
         exclude: /node_modules/,
         resolve: {
-          extensions: [".js", ".jsx"],
+          extensions: [".js", ".jsx", ".ts", ".tsx"],
         },
       },
       {
