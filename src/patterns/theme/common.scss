@@ -1,0 +1,12 @@
+@import "./colors.scss";
+@import "./fonts/";
+
+:root {
+  --c-white: #{$white-color};
+  --c-black: #{$black-color};
+  --c-red: #{$red-color};
+  --c-ultra-light-grey-color: #{$ultra-light-grey-color};
+  --c-ligthGrey: #{$light-grey-color};
+  --c-grey: #{$grey-color};
+  --c-darkGrey: #{$darkGrey-color};
+}

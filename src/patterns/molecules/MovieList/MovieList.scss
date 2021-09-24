@@ -1,0 +1,9 @@
+@import "../../theme/common.scss";
+
+.listWrapper{
+    display: grid;
+    flex-wrap: wrap;
+    padding: 58px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 56px;
+}

@@ -1,10 +1,20 @@
 import React from "react";
+import { MainBanner } from "../../patterns/molecules/MainBanner";
+import { MovieList } from "../../patterns/molecules/MovieList";
+import { ErrorBoundary } from "../../App/ErrorBoundary";
+import { Footer } from "../../patterns/atoms/Footer";
+
 import "./home.scss";
 
-export function Home() {
+export const Home = () => {
+
   return (
-    <div className="home">
-      <h1>Netflix <span>Roullet</span></h1>
-    </div>
+    <main>
+      <MainBanner />
+      <ErrorBoundary>
+        <MovieList />
+      </ErrorBoundary>
+      <Footer light="roulette">netflix</Footer>
+    </main>
   );
 }
