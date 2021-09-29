@@ -1,0 +1,19 @@
+@import "common.scss";
+
+.footer{
+    align-items: center;
+    background: var(--c-grey);
+    color: var(--c-red);
+    display: flex;
+    height: 70px;
+    justify-content: center;
+    width: 100%;
+    p {
+      color: var(--c-red);
+      font-size: 20px;
+      font-weight: 900;
+      span {
+          font-weight: 400;
+      }
+  }
+}

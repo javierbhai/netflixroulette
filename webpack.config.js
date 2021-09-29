@@ -22,7 +22,14 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: ["style-loader", "css-loader", {
+          loader: "sass-loader",
+          options: {
+            sassOptions: {
+              includePaths:[path.resolve(__dirname, 'src/design/settings/')]
+            }
+          }
+        }],
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
@@ -43,4 +50,13 @@ module.exports = {
   devServer: {
     port: 9000,
   },
+  resolve: {
+    alias: {
+      common: path.resolve(__dirname, 'src/common/'),
+      assets: path.resolve(__dirname, 'src/assets/'),
+      design: path.resolve(__dirname, 'src/design/'),
+      pages: path.resolve(__dirname, 'src/pages/'),
+      uikit: path.resolve(__dirname, 'src/ui-kit/'),  
+    }
+  }
 };

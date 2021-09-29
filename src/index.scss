@@ -1,5 +1,5 @@
-@import "../src/patterns/theme/common.scss";
-@import "./patterns/theme/fonts/index.scss";
+@import "common.scss";
+@import "fonts/index.scss";
 
 body {
   background: var(--c-darkGrey);

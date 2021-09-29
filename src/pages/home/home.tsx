@@ -1,8 +1,8 @@
 import React from "react";
-import { MainBanner } from "../../patterns/molecules/MainBanner";
-import { MovieList } from "../../patterns/molecules/MovieList";
-import { ErrorBoundary } from "../../App/ErrorBoundary";
-import { Footer } from "../../patterns/atoms/Footer";
+import { MainBanner } from "uikit/molecules/MainBanner";
+import { MovieList } from "uikit/molecules/MovieList";
+import { ErrorBoundary } from "common/ErrorBoundary";
+import { Footer } from "uikit/atoms/Footer";
 
 import "./home.scss";
 
@@ -10,11 +10,11 @@ export const Home = () => {
 
   return (
     <main>
-      <MainBanner />
-      <ErrorBoundary>
-        <MovieList />
-      </ErrorBoundary>
-      <Footer light="roulette">netflix</Footer>
-    </main>
+        <MainBanner />
+          <ErrorBoundary>
+            <MovieList />
+          </ErrorBoundary>
+        <Footer light="roulette">netflix</Footer>
+      </main>
   );
 }

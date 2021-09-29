@@ -1,0 +1,15 @@
+@import "common.scss";
+
+.movieDate{
+  align-content: center;
+  border-radius: 5px;
+  border: solid 1px var(--c-ultra-light-grey-color);
+  color: var(--c-white);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 14px;
+  font-weight: 300;
+  height: 26px;
+  justify-content: center;
+  width: 66px;
+}
