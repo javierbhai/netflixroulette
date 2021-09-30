@@ -1,0 +1,48 @@
+@import "common.scss";
+
+.MainBanner{
+    align-items: center;
+    background-image: url(assets/images/banner.png);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 396px;
+    padding: 20px 60px;
+    .Searchform{
+        display: flex;
+        width: 100%;
+        &__input{
+            width: 80%;
+            background: #323232;
+            border-radius: 5px;
+            box-sizing: border-box;
+            color: #FFF;
+            font-size: 20px;
+            height: 57px;
+            opacity: 80%;
+            padding: 20px;
+        }
+        &__button{
+            background-color: var(--c-red);
+            border-radius: 5px;
+            color: var(--c-white);
+            font-family: $montserrat;
+            font-size: 20px;
+            width: 20%;
+        }
+    }
+    .top{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        &__logo {
+            color: var(--c-red);
+            font-size: 20px;
+            font-weight: 900;
+            &__button {
+                font-weight: 400;
+            }
+        }
+    }
+}

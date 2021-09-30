@@ -1,2 +1,9 @@
+@import "common.scss";
+@import "fonts/index.scss";
 
-
+body {
+  background: var(--c-darkGrey);
+  color: var(--c-white);
+  font-family: $montserrat;
+  margin: 0;
+}

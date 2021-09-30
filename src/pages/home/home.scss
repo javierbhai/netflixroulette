@@ -1,9 +1,10 @@
-.home{
-  display: flex;
-  font-family: 'Montserrat', sans-serif;
-  color: #F65261;
-  height: 100vh;
-  align-content: center;
+@import "common.scss";
+
+body{
+  display: grid;
   justify-content: center;
-  flex-wrap: wrap;
+}
+
+main{
+  width: 1200px;
 }

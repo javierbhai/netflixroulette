@@ -1,0 +1,10 @@
+@import "common.scss";
+
+.movieElement{
+    &__info{
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 0;
+    }
+}

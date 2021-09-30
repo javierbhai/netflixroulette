@@ -3,7 +3,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./src/index.tsx",
   output: {
     filename: "bundle.[hash].js",
     path: path.resolve(__dirname, "dist"),
@@ -13,16 +13,31 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.tsx?$/,
         use: "babel-loader",
         exclude: /node_modules/,
         resolve: {
-          extensions: [".js", ".jsx"],
+          extensions: [".js", ".jsx", ".ts", ".tsx"],
         },
       },
       {
         test: /\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: ["style-loader", "css-loader", {
+          loader: "sass-loader",
+          options: {
+            sassOptions: {
+              includePaths:[path.resolve(__dirname, 'src/design/settings/')]
+            }
+          }
+        }],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
       },
     ],
   },
@@ -35,4 +50,13 @@ module.exports = {
   devServer: {
     port: 9000,
   },
+  resolve: {
+    alias: {
+      common: path.resolve(__dirname, 'src/common/'),
+      assets: path.resolve(__dirname, 'src/assets/'),
+      design: path.resolve(__dirname, 'src/design/'),
+      pages: path.resolve(__dirname, 'src/pages/'),
+      uikit: path.resolve(__dirname, 'src/ui-kit/'),  
+    }
+  }
 };
