@@ -1,0 +1,33 @@
+@import "common.scss";
+
+
+.selectTheme{
+
+  .rmsc {
+    --rmsc-hover: transparent;
+    --rmsc-selected: transparent;
+    --rmsc-border: transparent;
+    --rmsc-gray: var(--c-white);
+    --rmsc-bg: rgba(51, 51, 51, 0.94);
+    --rmsc-p: 20px;
+    --rmsc-radius: 5px;
+    --rmsc-h: 54px;
+    font-size: 20px;
+    font-family: $montserrat;
+    font-weight: 300;
+    outline: none;
+    & .gray{
+      font-size: 20px;
+    }
+    .dropdown-container:focus-within{
+      box-shadow: transparent;
+      border-color: transparent;
+    }
+    .dropdown-content{
+      .panel-content{
+        background: var(--c-darkGrey);
+        color: var(--c-white)
+      }
+    }
+  }
+}

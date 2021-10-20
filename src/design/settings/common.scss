@@ -9,6 +9,37 @@
   --c-ligthGrey: #{$light-grey-color};
   --c-grey: #{$grey-color};
   --c-darkGrey: #{$darkGrey-color};
+  --c-darkGreyTrans: #{$darkGrey-transparent};
+  --c-lightBlack: #{$lightBlack-color};
+}
+
+.Modal {
+    max-width: 970px;
+    padding: 50px;
+    background-color: var(--c-darkGrey);
+    position: relative;
+	min-width: 650px;
+	border: none;
+    outline: none;
+}
+
+.Overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+	justify-content: center;
+	background: var(--c-darkGreyTrans);
+}
+
+.CloseIcon{
+    position: absolute;
+    right: 30px;
+    top: 30px;
 }
 
 html, body, button, div, span, applet, object, iframe,
@@ -53,4 +84,10 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+.displayNone{
+	display: none;
+}
+.displayFlex{
+	display: flex;
 }

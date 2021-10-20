@@ -1,0 +1,42 @@
+@import "common.scss";
+
+.deleteEdit{
+  display: none;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  &__ul {
+      align-content: center;
+      background: var(--c-darkGrey);
+      border-radius: 6px;
+      box-sizing: border-box;
+      display: flex;
+      display: flex;
+      flex-direction: column;
+      height: 111px;
+      justify-content: flex-end;
+      padding: 10px 0;
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      width: 190px;
+  }
+  &__li{
+      padding: 10px;
+  }
+  &__li:hover{
+      background: var(--c-red);
+  }
+  &__close{
+    height: 25px;
+    padding-top: 10px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 30px;
+  }
+  &__closeicon{
+    width: 12px;
+  }
+}
