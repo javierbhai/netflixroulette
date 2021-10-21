@@ -68,7 +68,8 @@ module.exports = {
       design: path.resolve(__dirname, 'src/design/'),
       lib: path.resolve(__dirname, 'src/lib/'),
       pages: path.resolve(__dirname, 'src/pages/'),
-      uikit: path.resolve(__dirname, 'src/ui-kit/'),
+      types: path.resolve(__dirname, 'src/types/'),
+      uikit: path.resolve(__dirname, 'src/ui-kit/')
     }
   }
 };

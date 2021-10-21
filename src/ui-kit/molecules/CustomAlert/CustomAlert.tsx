@@ -3,9 +3,9 @@ import * as React from "react"
 import "./CustomAlert.scss"
 
 type Props = {
-    action?: String,
-    content?: String,
-    legend?: String
+    action?: string,
+    content?: string,
+    legend?: string
 }
 
 export const CustomAlert: React.FC<Props> = (props: Props) => {

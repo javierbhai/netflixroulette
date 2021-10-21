@@ -1,1 +1,1 @@
-export const noob = () => {}
+export const noop = () => {}

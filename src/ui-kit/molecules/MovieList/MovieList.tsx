@@ -1,11 +1,12 @@
 import * as React from "react"
 import { MovieElement } from "../MovieElement";
+import { Movie } from "types";
 import "./MovieList.scss"
 
 type Props = {
     deleteAction?: () => {};
     editAction?: () => {};
-    movies?: Array<{}>;
+    movies?: Movie;
 }
 
 export const MovieList: React.FC<Props> = (props: Props) => {
@@ -13,7 +14,7 @@ export const MovieList: React.FC<Props> = (props: Props) => {
     
     return (
         <section className="listWrapper">
-            {movies.map((movie:any) => {
+            {movies.map((movie: Movie) => {
                 return(
                 <MovieElement
                     date={movie.date}

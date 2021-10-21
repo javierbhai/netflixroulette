@@ -1,12 +1,9 @@
 import * as React from "react";
 
-import { DeleteModal } from "uikit/molecules/DeleteModal";
-import { EditModal } from "uikit/molecules/EditModal";
+import { DeleteModal, EditModal, MainBanner, MovieList } from "uikit/molecules";
 import { ErrorBoundary } from "common/ErrorBoundary";
 import { Footer } from "uikit/atoms/Footer";
-import { MainBanner } from "uikit/molecules/MainBanner";
 import { mock } from "assets/movies";
-import { MovieList } from "uikit/molecules/MovieList";
 
 import "./home.scss";
 

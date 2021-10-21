@@ -1,10 +1,7 @@
 import * as React from "react"
-import "./Select.scss"
 import { MultiSelect } from "react-multi-select-component";
 
-type Props = {
-    children?: string
-}
+import "./Select.scss"
 
 const options = [
     {label: "Crime", value:"crime"},
@@ -13,7 +10,7 @@ const options = [
     {label: "Comedy", value:"comedy"}
 ];
 
-export const Select: React.FC<Props> = (props: Props) => {
+export const Select: React.FC<React.PropsWithChildren<{}>> = (props: React.PropsWithChildren<{}>) => {
   const [selected, setSelected] = React.useState([]);
 
   return (

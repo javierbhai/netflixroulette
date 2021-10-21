@@ -13,7 +13,7 @@ type Props = {
 export const DeleteEdit: React.FC<Props> = (props: Props) => {
     const { deleteAction, editAction, id } = props
     const [isOpen, setIsOpen] = React.useState(false)
-    const toggle = () => setIsOpen(!isOpen);    
+    const toggle = () => setIsOpen(isOpen => !isOpen);    
     
     const handleEditAction = (id: any) => {
         editAction(id)
