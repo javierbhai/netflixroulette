@@ -48,8 +48,8 @@ export const Home = () => {
             <EditModal isAddOrEdit={addOrEdit} editAddIsOn={showEditAddModal} setEditAddIsOn={setShowEditAddModal} />
             <DeleteModal deleteIsOn={showDeleteModal} setDeleteIsOn={setShowDeleteModal} />
             <MovieList 
-              editAccion={handleEdit}
-              deleteAccion={handleDelete}
+              editAction={handleEdit}
+              deleteAction={handleDelete}
               movies={movies}
             />
           </ErrorBoundary>

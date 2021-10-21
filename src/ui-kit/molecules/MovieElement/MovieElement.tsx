@@ -8,8 +8,8 @@ import "./MovieElement.scss"
 
 type Props = {
     date?: string,
-    deleteAccion?: any
-    editAccion?: any
+    deleteAction?: any
+    editAction?: any
     genres?: string,
     id?: string,
     imageSrc?: string,
@@ -17,7 +17,7 @@ type Props = {
 }
 
 export const MovieElement: React.FC<Props> = (props: Props) => {
-    const { date = "Soon", deleteAccion, editAccion, genres, id, imageSrc = cover, title } = props;
+    const { date = "Soon", deleteAction, editAction, genres, id, imageSrc = cover, title } = props;
 
     return (
         <a className="movieElement">
@@ -26,8 +26,8 @@ export const MovieElement: React.FC<Props> = (props: Props) => {
                 <div>
                     <DeleteEdit
                         id={id}
-                        deleteAccion={deleteAccion}
-                        editAccion={editAccion}
+                        deleteAction={deleteAction}
+                        editAction={editAction}
                     />
                     <MovieTitle movieTitle={title} />
                     <Text>{genres}</Text>

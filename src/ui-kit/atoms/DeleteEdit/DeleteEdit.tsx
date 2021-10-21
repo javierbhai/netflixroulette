@@ -5,23 +5,23 @@ import deleteEdit from "uikit/icons/delete-edit.svg"
 import "./DeleteEdit.scss"
 
 type Props = {
-    deleteAccion?: any;
-    editAccion?: any;
+    deleteAction?: any;
+    editAction?: any;
     id?: string;
 }
 
 export const DeleteEdit: React.FC<Props> = (props: Props) => {
-    const { deleteAccion, editAccion, id } = props
+    const { deleteAction, editAction, id } = props
     const [isOpen, setIsOpen] = React.useState(false)
     const toggle = () => setIsOpen(!isOpen);    
     
     const handleEditAction = (id: any) => {
-        editAccion(id)
+        editAction(id)
         toggle()
     }
 
     const handleDeleteAction = (id: any) => {
-        deleteAccion(id)
+        deleteAction(id)
         toggle()
     }
 
