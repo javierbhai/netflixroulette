@@ -1,18 +1,18 @@
-import React from "react"
+import * as React from "react"
 import { Title } from "uikit/atoms/Title";
 import "./MainBanner.scss"
 
 type Props = {
-    children?: string
+    addAction?: (action: boolean) => {};
 }
 
 export const MainBanner: React.FC<Props> = (props: Props) => {
-    const { children } = props
+    const { addAction } = props
     return (
         <header className="MainBanner">
             <section className="top">
                 <p className="top__logo">netflix<span>roulette</span></p>
-                <a className="top__button">+ ADD MOVIE</a>
+                <a className="top__button" onClick={() => addAction(false)}>+ ADD MOVIE</a>
             </section>
             <Title title="FIND YOUR MOVIE" />
             <form action="" className="Searchform">
@@ -20,5 +20,5 @@ export const MainBanner: React.FC<Props> = (props: Props) => {
                 <button className="Searchform__button">SEARCH</button>
             </form>
         </header>
-    )
-}
+    );
+};

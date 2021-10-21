@@ -1,4 +1,4 @@
-import React from "react"
+import * as React from "react"
 
 type Props = {
     children?: any,
@@ -10,6 +10,6 @@ export const ErrorBoundary: React.FC<Props> = (props: Props) => {
     const errorMessage = (
         <h2>{error}</h2>
     )
-        
+    
     return <> { error ? errorMessage : children } </>
 }

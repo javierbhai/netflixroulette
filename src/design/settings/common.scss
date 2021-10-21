@@ -2,41 +2,45 @@
 @import "./fonts/";
 
 :root {
-  --c-white: #{$white-color};
   --c-black: #{$black-color};
-  --c-red: #{$red-color};
-  --c-ultra-light-grey-color: #{$ultra-light-grey-color};
-  --c-ligthGrey: #{$light-grey-color};
-  --c-grey: #{$grey-color};
   --c-darkGrey: #{$darkGrey-color};
   --c-darkGreyTrans: #{$darkGrey-transparent};
+  --c-grey: #{$grey-color};
   --c-lightBlack: #{$lightBlack-color};
+  --c-ligthGrey: #{$light-grey-color};
+  --c-red: #{$red-color};
+  --c-ultra-light-grey-color: #{$ultra-light-grey-color};
+  --c-white: #{$white-color};
 }
 
 .Modal {
-    max-width: 970px;
-    padding: 50px;
-    background-color: var(--c-darkGrey);
-    position: relative;
-	min-width: 650px;
 	border: none;
+	min-width: 650px;
+    background-color: var(--c-darkGrey);
+    max-width: 970px;
     outline: none;
+    padding: 50px;
+    position: relative;
 }
 
 .Overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
+	align-content: center;
+	background: var(--c-darkGreyTrans);
 	bottom: 0;
 	display: flex;
 	flex-wrap: wrap;
-	align-content: center;
 	justify-content: center;
-	background: var(--c-darkGreyTrans);
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
 }
 
 .CloseIcon{
+	cursor: pointer;
+	height: 23px;
+	padding: 10px;
+	width: 23px;
     position: absolute;
     right: 30px;
     top: 30px;
@@ -55,11 +59,11 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
 	border: 0;
 	font-size: 100%;
 	font: inherit;
+	margin: 0;
+	padding: 0;
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */

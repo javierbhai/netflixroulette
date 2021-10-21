@@ -1,25 +1,24 @@
 import * as React from "react"
 import { DeleteEdit } from "uikit/atoms/DeleteEdit";
+import { MovieDate } from "uikit/atoms/MovieDate";
 import { MovieTitle } from "uikit/atoms/MovieTitle";
 import { Text } from "uikit/atoms/Text";
-import { MovieDate } from "uikit/atoms/MovieDate";
-import cover from "assets/images/pulp-fiction.png"
+import cover from "assets/images/cover.png"
 import "./MovieElement.scss"
 
 type Props = {
-    imageSrc?: string,
-    title?: string,
-    genres?: string,
     date?: string,
-    id?: string,
     deleteAccion?: any
     editAccion?: any
+    genres?: string,
+    id?: string,
+    imageSrc?: string,
+    title?: string,
 }
 
 export const MovieElement: React.FC<Props> = (props: Props) => {
-    const { imageSrc, title, genres, date, deleteAccion, editAccion, id } = props;
-    
-    
+    const { date = "Soon", deleteAccion, editAccion, genres, id, imageSrc = cover, title } = props;
+
     return (
         <a className="movieElement">
             <img src={imageSrc} className="movieElement__image" alt={title} />

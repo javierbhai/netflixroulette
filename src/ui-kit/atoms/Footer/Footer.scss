@@ -8,11 +8,11 @@
     height: 70px;
     justify-content: center;
     width: 100%;
-    p {
+    &__logo {
       color: var(--c-red);
       font-size: 20px;
       font-weight: 900;
-      span {
+      &--light {
           font-weight: 400;
       }
   }

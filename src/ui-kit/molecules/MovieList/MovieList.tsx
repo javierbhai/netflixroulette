@@ -3,27 +3,27 @@ import { MovieElement } from "../MovieElement";
 import "./MovieList.scss"
 
 type Props = {
-    movies?: any,
-    deleteAccion?: any
-    editAccion?: any
+    deleteAccion?: () => {};
+    editAccion?: () => {};
+    movies?: Array<{}>;
 }
 
 export const MovieList: React.FC<Props> = (props: Props) => {
-    const { movies, deleteAccion, editAccion } = props;
+    const { deleteAccion, editAccion, movies } = props;
     
     return (
         <section className="listWrapper">
             {movies.map((movie:any) => {
                 return(
                 <MovieElement
-                    imageSrc={movie.poster_path}
-                    title={movie.title}
-                    genres={movie.genres.join(', ')}
                     date={movie.date}
-                    key={movie.id}
-                    id={movie.id}
                     deleteAccion={deleteAccion}
                     editAccion={editAccion}
+                    genres={movie.genres.join(', ')}
+                    id={movie.id}
+                    imageSrc={movie.poster_path}
+                    key={movie.id}
+                    title={movie.title}
                 />
             )})}
         </section>

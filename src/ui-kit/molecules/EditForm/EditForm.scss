@@ -1,53 +1,50 @@
 @import "common.scss";
 
-.modal{
-
-  .addMovieForm{
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-column-gap: 30px;
-    grid-row-gap: 15px;
-    &__el{
-      display: flex;
-      flex-direction: column;
-      .titleLable{
-        color: var(--c-red);
-        padding: 15px 0;
-      }
-      &--overview{
-        grid-column-start: 1;
-        grid-column-end: 3;
-      }
-      &--actions{
-        flex-direction: row;
-        grid-column-start: 1;
-        grid-column-end: 3;
-        justify-content: flex-end;
-      }
+.addMovieForm{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-column-gap: 30px;
+  grid-row-gap: 15px;
+  &__el{
+    display: flex;
+    flex-direction: column;
+    .titleLable{
+      color: var(--c-red);
+      padding: 15px 0;
     }
-    .btn{
-      padding: 20px 60px;
-      border-radius: 5px;
-      margin: 0 10px;
-      background: var(--c-red);
-      color: var(--c-white);
-      &--border{
-        background: transparent;
-        border: 1px solid var(--c-red);
-        color: var(--c-red);
-      }
+    &--overview{
+      grid-column-start: 1;
+      grid-column-end: 3;
     }
-    input, textarea {
-      background: var(--c-lightBlack);
-      border-radius: 5px;
-      font-size: 20px;
-      padding: 15px;
-      box-sizing: border-box;
-      color: var(--c-white);
-      font-weight: 300;
-      border: none;
-      resize: none;
-      outline: none;
+    &--actions{
+      flex-direction: row;
+      grid-column-start: 1;
+      grid-column-end: 3;
+      justify-content: flex-end;
     }
+  }
+  .btn{
+    padding: 20px 60px;
+    border-radius: 5px;
+    margin: 0 10px;
+    background: var(--c-red);
+    color: var(--c-white);
+    &--border{
+      background: transparent;
+      border: 1px solid var(--c-red);
+      color: var(--c-red);
+    }
+  }
+  input, textarea {
+    background: var(--c-lightBlack);
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 15px;
+    box-sizing: border-box;
+    color: var(--c-white);
+    font-weight: 300;
+    border: none;
+    resize: none;
+    outline: none;
   }
 }
