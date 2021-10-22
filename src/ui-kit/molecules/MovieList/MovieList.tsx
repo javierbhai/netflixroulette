@@ -6,7 +6,7 @@ import "./MovieList.scss"
 type Props = {
     deleteAction?: () => {};
     editAction?: () => {};
-    movies?: Movie;
+    movies?: Movie[];
 }
 
 export const MovieList: React.FC<Props> = (props: Props) => {
