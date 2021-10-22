@@ -1,19 +1,32 @@
-import React from "react"
-import { movies } from "assets/movies";
+import * as React from "react"
 import { MovieElement } from "../MovieElement";
+import { Movie } from "types";
 import "./MovieList.scss"
 
-export const MovieList = () => { 
+type Props = {
+    deleteAction?: () => {};
+    editAction?: () => {};
+    movies?: Movie[];
+}
+
+export const MovieList: React.FC<Props> = (props: Props) => {
+    const { deleteAction, editAction, movies } = props;
+    
     return (
         <section className="listWrapper">
-            {movies.map((movie) => (
+            {movies.map((movie: Movie) => {
+                return(
                 <MovieElement
-                    title={movie.title}
-                    description={movie.description}
                     date={movie.date}
+                    deleteAction={deleteAction}
+                    editAction={editAction}
+                    genres={movie.genres.join(', ')}
+                    id={movie.id}
+                    imageSrc={movie.poster_path}
                     key={movie.id}
+                    title={movie.title}
                 />
-            ))}
+            )})}
         </section>
     )
 }

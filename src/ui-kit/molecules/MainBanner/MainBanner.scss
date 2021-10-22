@@ -13,7 +13,6 @@
         display: flex;
         width: 100%;
         &__input{
-            width: 80%;
             background: #323232;
             border-radius: 5px;
             box-sizing: border-box;
@@ -22,11 +21,13 @@
             height: 57px;
             opacity: 80%;
             padding: 20px;
+            width: 80%;
         }
         &__button{
             background-color: var(--c-red);
             border-radius: 5px;
             color: var(--c-white);
+            cursor: pointer;
             font-family: $montserrat;
             font-size: 20px;
             width: 20%;
@@ -40,9 +41,11 @@
             color: var(--c-red);
             font-size: 20px;
             font-weight: 900;
-            &__button {
-                font-weight: 400;
-            }
+        }
+        &__button {
+            cursor: pointer;
+            font-weight: 400;
+            padding: 10px;
         }
     }
 }

@@ -39,6 +39,17 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'svg-url-loader',
+            options: {
+              limit: 10000,
+            },
+          },
+        ]
+      },
     ],
   },
   plugins: [
@@ -52,11 +63,13 @@ module.exports = {
   },
   resolve: {
     alias: {
-      common: path.resolve(__dirname, 'src/common/'),
       assets: path.resolve(__dirname, 'src/assets/'),
+      common: path.resolve(__dirname, 'src/common/'),
       design: path.resolve(__dirname, 'src/design/'),
+      lib: path.resolve(__dirname, 'src/lib/'),
       pages: path.resolve(__dirname, 'src/pages/'),
-      uikit: path.resolve(__dirname, 'src/ui-kit/'),  
+      types: path.resolve(__dirname, 'src/types/'),
+      uikit: path.resolve(__dirname, 'src/ui-kit/')
     }
   }
 };

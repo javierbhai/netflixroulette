@@ -4,6 +4,6 @@
     display: grid;
     flex-wrap: wrap;
     padding: 58px;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, [col] 320px );
     grid-gap: 56px;
 }
