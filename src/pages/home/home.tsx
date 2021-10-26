@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { DeleteModal, EditModal, MainBanner, MovieList } from "uikit/molecules";
+import { DeleteModal, EditModal, MovieDetail, MovieList, MainBanner } from "uikit/molecules";
 import { ErrorBoundary } from "common/ErrorBoundary";
 import { Footer } from "uikit/atoms/Footer";
 import { mock } from "assets/movies";
@@ -13,8 +13,17 @@ export const Home = () => {
   const [ addOrEdit, setAddOrEdit ] = React.useState("")
   const [ showDeleteModal, setShowDeleteModal ] = React.useState(false)
   const [ showEditAddModal, setShowEditAddModal ] = React.useState(false)
+  const [ idToDisplayModal, setIdToDisplayModal ] = React.useState()
 
+  React.useEffect(()=>{},[])
   const [ movies, setmovies ] = React.useState(initialState);  
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
 
   const handleFilter = (id:string) => {
     let result = movies.filter((el:any)=> el.id == id);
@@ -28,7 +37,7 @@ export const Home = () => {
   }
   
   const handleEdit = (editId:string) => {
-    console.log("Edit", handleFilter(editId));
+    console.log("Edit",);
     setShowEditAddModal(true)
     setAddOrEdit("Edit")
   }
@@ -38,15 +47,29 @@ export const Home = () => {
     setAddOrEdit("Add")
   }
 
+  const handleSearch = () => {
+    console.log("Search Please");
+  }
+
+  const handleDetail = (detailId: string) => {
+    setIdToDisplayModal(handleFilter(detailId))
+    scrollToTop()
+  }
+
+  React.useEffect(()=>{
+    console.log(idToDisplayModal)
+  }, [idToDisplayModal])
+
   return (
     <main>
-        <MainBanner addAction={handleAdd} />
+        {idToDisplayModal ? <MovieDetail searchAction={handleSearch} movieToDisplay={idToDisplayModal} /> : <MainBanner addAction={handleAdd} /> }
           <ErrorBoundary>
             <EditModal isAddOrEdit={addOrEdit} editAddIsOn={showEditAddModal} setEditAddIsOn={setShowEditAddModal} />
             <DeleteModal deleteIsOn={showDeleteModal} setDeleteIsOn={setShowDeleteModal} />
             <MovieList 
               editAction={handleEdit}
               deleteAction={handleDelete}
+              detailAction={handleDetail}
               movies={movies}
             />
           </ErrorBoundary>

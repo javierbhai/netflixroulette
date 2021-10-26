@@ -25,7 +25,6 @@ export const DeleteEdit: React.FC<Props> = (props: Props) => {
         toggle()
     }
 
-    
     return (
         <>
         <div className="deleteEdit">

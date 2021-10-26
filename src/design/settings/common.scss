@@ -12,6 +12,19 @@
   --c-ultra-light-grey-color: #{$ultra-light-grey-color};
   --c-white: #{$white-color};
 }
+.df-row{
+	display: flex;
+	flex-direction: row;
+}
+
+.df-column{
+	display: flex;
+	flex-direction: column;
+}
+
+.ai-center{
+	align-items: center;
+}
 
 .Modal {
 	border: none;
