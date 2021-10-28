@@ -1,6 +1,9 @@
 import * as React from "react"
-import { MovieElement } from "../MovieElement";
+
+import { join } from "lib/settings";
 import { Movie } from "types";
+import { MovieElement } from "../MovieElement";
+
 import "./MovieList.scss"
 
 type Props = {
@@ -22,7 +25,7 @@ export const MovieList: React.FC<Props> = (props: Props) => {
                     deleteAction={deleteAction}
                     detailAction={detailAction}
                     editAction={editAction}
-                    genres={movie.genres.join(', ')}
+                    genres={join(movie.genres)}
                     id={movie.id}
                     imageSrc={movie.poster_path}
                     key={movie.id}

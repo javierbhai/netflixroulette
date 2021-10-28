@@ -1,5 +1,7 @@
 import * as React from "react"
+
 import { Header } from "uikit/atoms/Header";
+import { join, timeConvert, yearConvert } from "lib/settings";
 import { Movie } from "types";
 import { Title, Text } from "uikit/atoms";
 
@@ -23,24 +25,6 @@ export const MovieDetail: React.FC<Props> = (props: Props) => {
       poster_path = cover
     } = movieToDisplay;
 
-    const toJoinedString = (genres: []) :string => {
-        return genres.join(", ")
-    }
-
-    const timeConvert = (n: number) => {
-        var num = n;
-        var hours = (num / 60);
-        var rhours = Math.floor(hours);
-        var minutes = (hours - rhours) * 60;
-        var rminutes = Math.round(minutes);
-        return `${rhours}h ${rminutes}min`;
-    }
-
-    const yearConvert = (release_date: string) => {
-        const newDate = new Date(release_date)
-        return newDate.getFullYear();
-    }
-
     const renderDetail = () =>{
         return(<article className="Detail">
             <div>
@@ -52,7 +36,7 @@ export const MovieDetail: React.FC<Props> = (props: Props) => {
                     <Text className="Detail__points" size="l">{vote_average}</Text>
                 </div>
                 <div>
-                    <Text>{toJoinedString(genres)}</Text>
+                    <Text>{join(genres)}</Text>
                     <div className="df-row">
                         <Text className="Detail__time" size="xl">{yearConvert(release_date)}</Text>
                         <Text className="Detail__time" size="xl">{timeConvert(runtime)}</Text>

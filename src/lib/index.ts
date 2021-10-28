@@ -1,1 +1,3 @@
-export const noop = () => {}
+export const noop = () => {};
+
+export const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });

@@ -4,6 +4,7 @@ import { DeleteModal, EditModal, MovieDetail, MovieList, MainBanner } from "uiki
 import { ErrorBoundary } from "common/ErrorBoundary";
 import { Footer } from "uikit/atoms/Footer";
 import { mock } from "assets/movies";
+import { scrollToTop } from "lib";
 
 import "./home.scss";
 
@@ -18,17 +19,11 @@ export const Home = () => {
   React.useEffect(()=>{},[])
   const [ movies, setmovies ] = React.useState(initialState);  
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  };
 
   const handleFilter = (id:string) => {
     let result = movies.filter((el:any)=> el.id == id);
     let filter = movies.indexOf(result[0]);
-    return movies[filter]
+    return movies[filter];
   }
 
   const handleDelete = (deleteId:string) => {
@@ -37,28 +32,28 @@ export const Home = () => {
   }
   
   const handleEdit = (editId:string) => {
-    console.log("Edit",);
-    setShowEditAddModal(true)
-    setAddOrEdit("Edit")
+    console.log("Handle Edit Function Fired");
+    setShowEditAddModal(true);
+    setAddOrEdit("Edit");
   }
 
   const handleAdd = () => {
-    setShowEditAddModal(true)
-    setAddOrEdit("Add")
+    setShowEditAddModal(true);
+    setAddOrEdit("Add");
   }
 
   const handleSearch = () => {
     console.log("Search Please");
   }
 
-  const handleDetail = (detailId: string) => {
-    setIdToDisplayModal(handleFilter(detailId))
-    scrollToTop()
+  const handleDisplayMovieDetail = (detailId: string) => {
+    setIdToDisplayModal(handleFilter(detailId));
+    scrollToTop();
   }
 
   React.useEffect(()=>{
-    console.log(idToDisplayModal)
-  }, [idToDisplayModal])
+    console.log(idToDisplayModal);
+  }, [idToDisplayModal]);
 
   return (
     <main>
@@ -69,7 +64,7 @@ export const Home = () => {
             <MovieList 
               editAction={handleEdit}
               deleteAction={handleDelete}
-              detailAction={handleDetail}
+              detailAction={handleDisplayMovieDetail}
               movies={movies}
             />
           </ErrorBoundary>
