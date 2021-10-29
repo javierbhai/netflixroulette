@@ -1,16 +1,20 @@
 import * as React from "react"
-import { MovieElement } from "../MovieElement";
+
+import { join } from "lib/settings";
 import { Movie } from "types";
+import { MovieElement } from "../MovieElement";
+
 import "./MovieList.scss"
 
 type Props = {
     deleteAction?: () => {};
+    detailAction: () => {};
     editAction?: () => {};
     movies?: Movie[];
 }
 
 export const MovieList: React.FC<Props> = (props: Props) => {
-    const { deleteAction, editAction, movies } = props;
+    const { deleteAction, detailAction, editAction, movies } = props;
     
     return (
         <section className="listWrapper">
@@ -19,8 +23,9 @@ export const MovieList: React.FC<Props> = (props: Props) => {
                 <MovieElement
                     date={movie.date}
                     deleteAction={deleteAction}
+                    detailAction={detailAction}
                     editAction={editAction}
-                    genres={movie.genres.join(', ')}
+                    genres={join(movie.genres)}
                     id={movie.id}
                     imageSrc={movie.poster_path}
                     key={movie.id}

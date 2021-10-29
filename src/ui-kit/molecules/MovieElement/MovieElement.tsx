@@ -7,20 +7,25 @@ import cover from "assets/images/cover.png"
 import "./MovieElement.scss"
 
 type Props = {
-    date?: string,
-    deleteAction?: any
-    editAction?: any
-    genres?: string,
-    id?: string,
-    imageSrc?: string,
-    title?: string,
+    date?: string;
+    deleteAction?: () => {};
+    editAction?: () => {};
+    detailAction?: (idParam: string) => {};
+    genres?: string;
+    id?: string;
+    imageSrc?: string;
+    title?: string;
 }
 
 export const MovieElement: React.FC<Props> = (props: Props) => {
-    const { date = "Soon", deleteAction, editAction, genres, id, imageSrc = cover, title } = props;
+    const { date = "Soon", deleteAction, detailAction, editAction, genres, id, imageSrc = cover, title } = props;
+
+    const handleDetail = (id: string) => {
+        detailAction(id)
+    }
 
     return (
-        <a className="movieElement">
+        <a className="movieElement" onClick={() => handleDetail(id)}>
             <img src={imageSrc} className="movieElement__image" alt={title} />
             <div className="movieElement__info">
                 <div>
