@@ -1,19 +1,21 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
+import { rootReducer } from "store/reducers"
 
-const counterReducer = (state: any = 0, action: any) => {
-    switch (action.type) {
-        case "@counter/incremented":
-            return state + 1;
 
-        case "@counter/decremented":
-            return state - 1;
+const thunkMiddleware = applyMiddleware(thunk);
 
-        case "@counter/reseted":
-            return 0;
+declare global {
+    interface Window {
+      __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
     }
 }
 
-const store = createStore(counterReducer);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const enhancers = compose(thunkMiddleware, composeEnhancers());
+export const store = createStore(rootReducer, enhancers);
+
+
 
 const actionIncrement = {
     type:"@counter/incremented"
