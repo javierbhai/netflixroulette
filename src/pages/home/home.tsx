@@ -5,20 +5,24 @@ import { ErrorBoundary } from "common/ErrorBoundary";
 import { Footer } from "uikit/atoms/Footer";
 import { mock } from "assets/movies";
 import { scrollToTop } from "lib";
-import { createStore } from "redux";
+
+//Temporal
+import { loadMoviesAsyncAction } from '../../store/rootReducer';
+import { connect } from 'react-redux';
 
 import "./home.scss";
 
-export const Home = () => {
+export const Home = ({ isCharactersLoading, characters, fetchCharacters }: any) => {
 
   let initialState = mock;
-  const [ addOrEdit, setAddOrEdit ] = React.useState("")
-  const [ showDeleteModal, setShowDeleteModal ] = React.useState(false)
-  const [ showEditAddModal, setShowEditAddModal ] = React.useState(false)
-  const [ idToDisplayModal, setIdToDisplayModal ] = React.useState()
+  const [ addOrEdit, setAddOrEdit ] = React.useState("");
+  const [ showDeleteModal, setShowDeleteModal ] = React.useState(false);
+  const [ showEditAddModal, setShowEditAddModal ] = React.useState(false);
+  const [ idToDisplayModal, setIdToDisplayModal ] = React.useState();
+
 
   React.useEffect(()=>{},[])
-  const [ movies, setmovies ] = React.useState(initialState);  
+  const [ movies, setmovies ] = React.useState(initialState);
 
 
   const handleFilter = (id:string) => {
@@ -55,60 +59,15 @@ export const Home = () => {
   React.useEffect(()=>{
     console.log(idToDisplayModal);
   }, [idToDisplayModal]);
-  
-  const api = async (url: string) => {
-    try {
-      const response = await fetch(`${url}movies`)
-      const movies = await response.json();
-      console.log("Movies Fetched Data.....", movies.data);
-      return movies
-    } catch (error) {
-      throw new Error(error)
-    }
+
+  const handleLoadCharacters = () => {
+    fetchCharacters()
   }
-
-  api("http://localhost:4000/")
-
-const counterReducer = (state: any = 0, action: any) => {
-    switch (action.type) {
-        case "@counter/incremented":
-            return state + 1
-
-        case "@counter/decremented":
-            return state - 1
-        default:
-            return state;
-    }
-}
-
-const store = createStore(counterReducer)
-
-const actionIncrement = {
-    type:"@counter/incremented"
-}
-
-const actionDecrement = {
-    type:"@counter/decremented"
-}
-
-// counterReducer(0, actionIncrement)
-// counterReducer(1, actionDecrement)
-
-store.subscribe(() => {
-  store.getState()
-    console.log(store.getState())
-})
-
-store.dispatch(actionIncrement)
-store.dispatch(actionIncrement)
-store.dispatch(actionIncrement)
-
 
   return (
     <main>
         {idToDisplayModal ? <MovieDetail searchAction={handleSearch} movieToDisplay={idToDisplayModal} /> : <MainBanner addAction={handleAdd} /> }
-        {store.getState()}
-          <button onClick={() =>store.dispatch(actionIncrement)}>sumar</button>
+          <button onClick={handleLoadCharacters}>qweqweqw</button>
           <ErrorBoundary>
             <EditModal isAddOrEdit={addOrEdit} editAddIsOn={showEditAddModal} setEditAddIsOn={setShowEditAddModal} />
             <DeleteModal deleteIsOn={showDeleteModal} setDeleteIsOn={setShowDeleteModal} />
@@ -122,5 +81,16 @@ store.dispatch(actionIncrement)
         <Footer light="roulette">netflix</Footer>
       </main>
   );
-
 }
+
+const mapStateToProps = (state: any) => ({
+  movies: state.movies.movies,
+  isCharactersLoading: state.movies.loading
+})
+
+const mapDispatchToProps = (dispatch: any) => ({
+  fetchCharacters: () => { dispatch(loadMoviesAsyncAction()) }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
+
