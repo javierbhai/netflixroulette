@@ -12,11 +12,35 @@ export const loadMoviesSuccessAction = (results: any[]) => ({ type: 'LOAD_MOVIES
 export const loadMoviesAsyncAction = () => async (dispatch: any) => {
     dispatch(loadMoviesAction())
 
-    const { data } = await fetch('http://localhost:4000/movies').then(res => res.json())
-    console.log("lkasjdlkajs", data);
+    const { data } = await fetch("http://localhost:4000/movies").then(res => res.json())
+    console.log("Data", data);
 
     dispatch(loadMoviesSuccessAction(data))
 }
+
+export const loadMoviesSortAsyncAction = (genre: string) => async (dispatch: any) => {
+    let movie;
+    dispatch(loadMoviesAction())
+    if(genre==="all"){
+        movie = await fetch("http://localhost:4000/movies").then(res => res.json())
+    } else {
+        movie = await fetch(`http://localhost:4000/movies?searchBy=genres&filter=${genre}`).then(res => res.json())
+    }
+    dispatch(loadMoviesSuccessAction(movie.data))
+}
+
+export const loadMoviesSortOrderAsyncAction = (order: string) => async (dispatch: any) => {
+    let movie;
+    
+    dispatch(loadMoviesAction())
+    if(order===""){
+        movie = await fetch("http://localhost:4000/movies").then(res => res.json())
+    } else {
+        movie = await fetch(`http://localhost:4000/movies?sortOrder=${order}`).then(res => res.json())
+    }
+    dispatch(loadMoviesSuccessAction(movie.data))
+}
+
 
 const moviesReducer = (state = moviesInitialState, action: any) => {
     switch (action.type) {
@@ -28,7 +52,6 @@ const moviesReducer = (state = moviesInitialState, action: any) => {
             return {...state}
     }
 }
-
 
 export const rootReducer = combineReducers({
     movies: moviesReducer
