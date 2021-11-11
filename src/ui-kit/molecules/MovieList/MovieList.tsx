@@ -2,7 +2,7 @@ import * as React from "react"
 
 import { join } from "lib/settings";
 import { Movie } from "types";
-import { MovieElement } from "../MovieElement";
+import { MovieElement } from "uikit/molecules/MovieElement";
 
 import "./MovieList.scss"
 
@@ -18,10 +18,10 @@ export const MovieList: React.FC<Props> = (props: Props) => {
     
     return (
         <section className="listWrapper">
-            {movies.map((movie: Movie) => {
+            {movies.map((movie: Movie) => {                
                 return(
                 <MovieElement
-                    date={movie.date}
+                    date={movie.release_date}
                     deleteAction={deleteAction}
                     detailAction={detailAction}
                     editAction={editAction}

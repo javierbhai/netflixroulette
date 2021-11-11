@@ -1,0 +1,15 @@
+@import "common.scss";
+
+li{
+  .sortingMenu__button{
+    font-size: 16px;
+    text-transform: uppercase;
+    background: none;
+    color: white;
+    padding: 20px;
+  }
+}
+
+.active{
+  border-bottom: red 2px solid;
+}

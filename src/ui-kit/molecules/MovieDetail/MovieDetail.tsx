@@ -28,7 +28,7 @@ export const MovieDetail: React.FC<Props> = (props: Props) => {
     const renderDetail = () =>{
         return(<article className="Detail">
             <div>
-            <img src={poster_path} className="movieElement__image" alt="title" />
+            <img className="movieElement__image" alt="title" />
             </div>
             <div>
                 <div className="df-row ai-center">
