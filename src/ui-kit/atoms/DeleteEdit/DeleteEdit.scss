@@ -5,6 +5,7 @@
   position: absolute;
   right: 10px;
   top: 10px;
+  z-index: 2;
   &__ul {
       align-content: center;
       background: var(--c-darkGrey);
@@ -20,6 +21,7 @@
       right: 12px;
       top: 12px;
       width: 190px;
+      z-index: 3;
   }
   &__li{
       padding: 10px;

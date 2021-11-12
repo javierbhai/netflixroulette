@@ -11,7 +11,13 @@ import { ListElement } from "uikit/atoms/ListElement";
 import { loadMoviesAsyncAction, loadMoviesSortAsyncAction, loadMoviesSortOrderAsyncAction } from 'store/rootReducer';
 
 import "./home.scss";
+import { Formik, Field, Form, FormikHelpers } from 'formik';
 
+interface Values {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
 
 export const Home = ({ moviesData, fetchMovies, sortMoviesByGenres }: any) => {
   const [ addOrEdit, setAddOrEdit ] = React.useState("");
@@ -19,6 +25,7 @@ export const Home = ({ moviesData, fetchMovies, sortMoviesByGenres }: any) => {
   const [ showEditAddModal, setShowEditAddModal ] = React.useState(false);
   const [ idToDisplayModal, setIdToDisplayModal ] = React.useState();
   const moviesFilters = ["all", "Documentary", "comedy", "horror", "crime"];  
+
 
   React.useEffect(() => {
     fetchMovies()
@@ -43,8 +50,9 @@ export const Home = ({ moviesData, fetchMovies, sortMoviesByGenres }: any) => {
   
   const handleEdit = (editId:string) => {
     console.log("Handle Edit Function Fired");
-    setShowEditAddModal(true);
-    setAddOrEdit("Edit");
+    setShowDeleteModal(true)
+    //setShowEditAddModal(true);
+    //setAddOrEdit("Edit");
   }
 
   const handleAdd = () => {
@@ -64,6 +72,40 @@ export const Home = ({ moviesData, fetchMovies, sortMoviesByGenres }: any) => {
   return (
     <main>
         {idToDisplayModal ? <MovieDetail searchAction={handleSearch} movieToDisplay={idToDisplayModal} /> : <MainBanner addAction={handleAdd} /> }
+        <Formik
+          initialValues={{
+            firstName: '',
+            lastName: '',
+            email: '',
+          }}
+          onSubmit={(
+            values: Values,
+            { setSubmitting }: FormikHelpers<Values>
+          ) => {
+            setTimeout(() => {
+              alert(JSON.stringify(values, null, 2));
+              setSubmitting(false);
+            }, 500);
+          }}
+        >
+          <Form>
+            <label htmlFor="firstName">First Name</label>
+            <Field id="firstName" name="firstName" placeholder="John" />
+
+            <label htmlFor="lastName">Last Name</label>
+            <Field id="lastName" name="lastName" placeholder="Doe" />
+
+            <label htmlFor="email">Email</label>
+            <Field
+              id="email"
+              name="email"
+              placeholder="john@acme.com"
+              type="email"
+            />
+
+            <button type="submit">Submit</button>
+          </Form>
+        </Formik>
         <UnorderedList>
             {moviesFilters.map(( filter:string )=>{
                 return <ListElement key={filter} onClick={() => handleSortByGenres(filter)}>{filter}</ListElement>

@@ -28,7 +28,7 @@ export const MovieElement: React.FC<Props> = (props: Props) => {
     }
 
     return (
-        <a className="movieElement" onClick={() => handleDetail(id)}>
+        <div className="movieElement">
             <Image src={imageSrc} title={title} />
             <div className="movieElement__info">
                 <div>
@@ -42,6 +42,7 @@ export const MovieElement: React.FC<Props> = (props: Props) => {
                 </div>
                 <MovieDate>{yearConvert(date)}</MovieDate>
             </div>
-        </a>
+            <a className="movieElement__link" onClick={() => handleDetail(id)}></a>
+        </div>
     )
 }
