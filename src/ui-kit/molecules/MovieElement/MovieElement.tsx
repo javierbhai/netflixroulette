@@ -1,9 +1,12 @@
 import * as React from "react"
 import { DeleteEdit } from "uikit/atoms/DeleteEdit";
+import { Image } from "uikit/atoms/Image";
 import { MovieDate } from "uikit/atoms/MovieDate";
 import { MovieTitle } from "uikit/atoms/MovieTitle";
 import { Text } from "uikit/atoms/Text";
+import { yearConvert } from "lib/settings";
 import cover from "assets/images/cover.png"
+
 import "./MovieElement.scss"
 
 type Props = {
@@ -26,7 +29,7 @@ export const MovieElement: React.FC<Props> = (props: Props) => {
 
     return (
         <a className="movieElement" onClick={() => handleDetail(id)}>
-            <img src={imageSrc} className="movieElement__image" alt={title} />
+            <Image src={imageSrc} title={title} />
             <div className="movieElement__info">
                 <div>
                     <DeleteEdit
@@ -37,7 +40,7 @@ export const MovieElement: React.FC<Props> = (props: Props) => {
                     <MovieTitle movieTitle={title} />
                     <Text>{genres}</Text>
                 </div>
-                <MovieDate>{date}</MovieDate>
+                <MovieDate>{yearConvert(date)}</MovieDate>
             </div>
         </a>
     )

@@ -1,7 +1,5 @@
 import * as React from "react"
-
 import { Select } from "uikit/atoms/Select";
-
 import "./EditForm.scss"
 
 type Props = {
@@ -10,7 +8,12 @@ type Props = {
 
 export const EditForm: React.FC<Props> = (props: Props) => {
     const { isAddOrEdit } = props;
-    
+    const selectOptions = [
+        {label: "Crime", value:"crime"},
+        {label: "Documentary", value:"documentary"},
+        {label: "Horror", value:"horror"},
+        {label: "Comedy", value:"comedy"}
+    ];
     return(
         <>
             <form action="">
@@ -34,7 +37,7 @@ export const EditForm: React.FC<Props> = (props: Props) => {
                     </p>
                     <div className="addMovieForm__el">
                     <label className="titleLable">GENRE</label>
-                    <Select />
+                    <Select options={selectOptions}/>
                     </div>
                     <p className="addMovieForm__el">
                     <label className="titleLable">RUNTIME</label>
