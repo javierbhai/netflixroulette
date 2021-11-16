@@ -1,13 +1,24 @@
 import { combineReducers } from "redux";
 
-const moviesInitialState = {
+interface moviesInitialStateInterface {
+    loading: Boolean;
+    movies: Array<Object>;
+    moviesFilters:  Array<string>;
+  }
+
+let moviesInitialState: moviesInitialStateInterface;
+
+moviesInitialState = {
     loading: false,
-    movies: []
-}
+    movies: [],
+    moviesFilters: []
+};
 
 export const loadMoviesAction = () => ({ type: 'LOAD_MOVIES' })
 
 export const loadMoviesSuccessAction = (results: any[]) => ({ type: 'LOAD_MOVIES_SUCCESS', payload: results })
+
+export const loadMoviesFiltersAction = (filters: Array<string>) => ({ type: 'LOAD_MOVIES_FILTERS', payload: filters })
 
 export const loadMoviesAsyncAction = () => async (dispatch: any) => {
     dispatch(loadMoviesAction())
@@ -41,6 +52,13 @@ export const loadMoviesSortOrderAsyncAction = (order: string) => async (dispatch
     dispatch(loadMoviesSuccessAction(movie.data))
 }
 
+export const loadMoviesFiltersAsyncAction = () => (dispatch: any) => {
+
+    const filters = ["all", "Documentary", "comedy", "horror", "crime"]
+    console.log("filters", filters);
+
+    dispatch(loadMoviesFiltersAction(filters))
+}
 
 const moviesReducer = (state = moviesInitialState, action: any) => {
     switch (action.type) {
@@ -48,6 +66,8 @@ const moviesReducer = (state = moviesInitialState, action: any) => {
             return { ...state, loading: true }
         case 'LOAD_MOVIES_SUCCESS':
             return { ...state, loading: false, movies: action.payload }
+        case 'LOAD_MOVIES_FILTERS':
+            return { ...state, moviesFilters: action.payload, }
         default:
             return {...state}
     }

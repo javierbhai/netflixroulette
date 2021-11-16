@@ -8,20 +8,20 @@ import { UnorderedList } from "uikit/molecules/UnorderedList";
 //Redux
 import { connect } from 'react-redux';
 import { ListElement } from "uikit/atoms/ListElement";
-import { loadMoviesAsyncAction, loadMoviesSortAsyncAction, loadMoviesSortOrderAsyncAction } from 'store/rootReducer';
+import { loadMoviesAsyncAction, loadMoviesSortAsyncAction, loadMoviesSortOrderAsyncAction, loadMoviesFiltersAsyncAction } from 'store/rootReducer';
 
 import "./home.scss";
 
 
-export const Home = ({ moviesData, fetchMovies, sortMoviesByGenres }: any) => {
+export const Home = ({ moviesData, moviesFilters, fetchMovies, sortMoviesByGenres, fetchMoviesFilters }: any) => {
   const [ addOrEdit, setAddOrEdit ] = React.useState("");
   const [ showDeleteModal, setShowDeleteModal ] = React.useState(false);
   const [ showEditAddModal, setShowEditAddModal ] = React.useState(false);
   const [ idToDisplayModal, setIdToDisplayModal ] = React.useState();
-  const moviesFilters = ["all", "Documentary", "comedy", "horror", "crime"];  
 
   React.useEffect(() => {
-    fetchMovies()
+    fetchMovies();
+    fetchMoviesFilters();
   }, []);
 
   const handleFilter = (id:string) => {
@@ -85,13 +85,15 @@ export const Home = ({ moviesData, fetchMovies, sortMoviesByGenres }: any) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  moviesData: state.movies.movies
+  moviesData: state.movies.movies,
+  moviesFilters: state.movies.moviesFilters
 })
 
 const mapDispatchToProps = (dispatch: any) => ({
-  fetchMovies: () => { dispatch(loadMoviesAsyncAction()) },
-  sortMoviesByGenres: (genres: string) => { dispatch(loadMoviesSortAsyncAction(genres)) },
-  sortMoviesByOrder: (order: string)=> { dispatch(loadMoviesSortOrderAsyncAction(order)) }
+  fetchMoviesFilters: () => dispatch(loadMoviesFiltersAsyncAction()),
+  fetchMovies: () => dispatch(loadMoviesAsyncAction()),
+  sortMoviesByGenres: (genres: string) => dispatch(loadMoviesSortAsyncAction(genres)),
+  sortMoviesByOrder: (order: string)=> dispatch(loadMoviesSortOrderAsyncAction(order))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
